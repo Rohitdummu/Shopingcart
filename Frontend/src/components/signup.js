@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import {useNavigate } from 'react-router-dom'
+import {useNavigate , Link} from 'react-router-dom'
+const bgim = require('../images/background.jpeg')
 
 function Signup() {
-    const styl = { width: '20rem', margin: 'auto', display: 'block' }
+    const styl = { width: '22rem', margin: 'left', display: 'block' }
     const [data,setdata] = useState({
         email:'',password:'',repassword:'',address:'',name:''
     })
@@ -30,12 +31,23 @@ const handlesubmit = async (e)=>{
     }
 }
   return (
-    
-    <div style={{ width: '40rem' }} className=" shadow-lg container rounded text-center my-5 mb-2 bg-dark bg-gradient text-white">
-    <h2>Registration</h2>
+    <div style={{ 
+        backgroundImage: `url(${bgim})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          width: '100vw',
+          height: '100vh'
+      }}>
+    <div style={{ width: '31rem', height: '32rem' }} className="position-absolute top-50 start-50 translate-middle shadow-lg container rounded  my-5 mb-2 bg-dark bg-gradient text-white" >
+    <h2 className='text-center'>User Registration</h2>
         <div className='row'>
             <div className='col p-5'>
             <form onSubmit={(e)=>handlesubmit(e)}>
+                <div className="mb-3">
+                    <label className="form-label">Name<span className='text-danger'>*</span></label>
+                    <input className="form-control" style={styl} placeholder=' Enter Name' type="text-field" name="name" onChange={(e)=>handlechange(e)}/>
+                </div>
                 <div className="mb-3">
                     <label className="form-label">E-Mail<span className='text-danger'>*</span></label>
                     <input className="form-control" placeholder=' Enter E-Mail' style={styl} type="email" name="email" onChange={(e)=>handlechange(e)}/>
@@ -48,18 +60,14 @@ const handlesubmit = async (e)=>{
                     <label className="form-label">Re-Enter Password<span className='text-danger'>*</span></label>
                     <input className="form-control" style={styl} placeholder='Re Enter Password' type="password" name="repassword" onChange={(e)=>handlechange(e)}/>
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Name<span className='text-danger'>*</span></label>
-                    <input className="form-control" style={styl} placeholder=' Enter Name' type="text-field" name="name" onChange={(e)=>handlechange(e)}/>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Address</label>
-                    <input className="form-control" style={styl} type="text-field" placeholder=' Enter Address' name="address" onChange={(e)=>handlechange(e)}/>
-                </div>
-                <input type="submit" className="btn btn-primary" value="Submit" />
+                
+                <input type="submit" className="btn btn-primary" value="Submit" style={{margin:'auto',display:'block'}}/>
                 </form>
+                <label>Sign Up As ?<Link style={{textDecoration:'none'}} to="/adminsignup"> Admin</Link></label>
+                
             </div>
         </div>
+    </div>
     </div>
     
   )

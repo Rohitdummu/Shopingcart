@@ -1,15 +1,14 @@
 import React, { useState, useContext }  from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
-import {useNavigate } from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import {Store} from './App'
-
+const bgim = require('../images/background.jpeg')
 
 function Signin() {
-    const [login,setlogin] = useContext(Store)
-    const styl = { width: '20rem', margin: 'auto', display: 'block' }
+    const {setlogin} = useContext(Store)
+    const styl = { width: '20rem', margin: 'left', display: 'block' }
     const [flg,setflg] = useState(false)
-    const [msg,setmsg] = useState(null)
     const navigate = useNavigate()
     const [data,setdata] = useState({
         email:'',password:''
@@ -19,25 +18,12 @@ function Signin() {
         e.preventDefault()
         setdata({...data,[e.target.name]:e.target.value})
     }
-    const handleactv= async (e)=>{
-        try{
-            const resp = await axios.post("http://localhost:3007/reactivate",data)
-            if(resp.data.status===true){
-                setmsg(null)
-            }
-        }
-        catch(err){
-            console.log(err)
-            alert(err)
-        }
-
-    }
+    
     const handlesubmit = async (e)=>{ 
         e.preventDefault()
         if(data.email){
             try{
                 const resp = await axios.post("http://localhost:3007/getin",data)
-                setmsg(resp.data.msg)
                 setflg(resp.data.status)
                 if(resp.data.status){
                     localStorage.setItem("token",resp.data.token)
@@ -56,25 +42,37 @@ function Signin() {
     if(flg){
         navigate("/dashboard")
         setlogin(true)
+        localStorage.setItem("login",true)
     }
   return (
-    <div style={{ width: '40rem', height: '25rem' }} className="position-absolute top-50 start-50 translate-middle shadow-lg container rounded text-center my-5 mb-2 bg-dark bg-gradient text-white">
-    <h2>Login</h2>
+    <div style={{ 
+        backgroundImage: `url(${bgim})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          width: '100vw',
+          height: '100vh'
+      }}>
+    <div style={{ width: '28rem', height: '23rem' }} className="position-absolute top-50 start-50 translate-middle shadow-lg container rounded  my-5 mb-2 bg-dark bg-gradient text-white">
+    <h2 className='text-center'>User Login</h2>
         <div className='row'>
             <div className='col p-5'>
-            <form onSubmit={(e)=>handlesubmit(e)}>
-            <div className="mb-3">
-                <label className="form-label">E-Mail<span className='text-danger'>*</span></label>
-                <input className="form-control"  placeholder=' Enter E-Mail' style={styl} type="email" name="email" onChange={(e)=>handlechange(e)}/>
-            </div>
-            <div className="mb-3">
-                <label className="form-label">Password<span className='text-danger'>*</span></label>
-                <input className="form-control" placeholder=' Enter Password' style={styl} type="password" name="password" onChange={(e)=>handlechange(e)}/>
-            </div>
-           {msg==="Account Deactivated"?<button className="btn btn-primary" onClick={handleactv}>Re-Active</button>:<input type="submit" className="btn btn-primary" value="Submit" />}
-            </form>
+                <form onSubmit={(e)=>handlesubmit(e)}>
+                <div className="mb-3">
+                    <label className="form-label">E-Mail<span className='text-danger'>*</span></label>
+                    <input className="form-control"  placeholder=' Enter E-Mail' style={styl} type="email" name="email" onChange={(e)=>handlechange(e)}/>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Password<span className='text-danger'>*</span></label>
+                    <input className="form-control" placeholder=' Enter Password' style={styl} type="password" name="password" onChange={(e)=>handlechange(e)}/>
+                </div>
+                <input type="submit" style={{margin:'auto',display:'block'}} className="btn btn-primary" value="Submit" />
+                </form>
+                <br/>
+                <label>Sign in As ?<Link style={{textDecoration:'none'}} to="/adminsignin"> Admin</Link></label>
             </div>
         </div>
+    </div>
     </div>
   )
 }

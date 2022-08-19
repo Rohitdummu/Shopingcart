@@ -1,8 +1,8 @@
-const AuthModel=require("../models/newmodel")
+const AuthModel=require("../models/usermodel")
 let Controllers={}
 const bcrypt = require("bcrypt") 
 const jtoken = require("jsonwebtoken")
-
+const pdModel = require("../models/products")
 
 Controllers.signup = async (req,res)=>{
     try{
@@ -34,7 +34,7 @@ Controllers.signup = async (req,res)=>{
     }
     catch(err){
         console.log(err)
-        res.send({msg:"failed signup?",status:false}).status(500) //500 for internal server error
+        res.send({msg:"failed signup?",status:false})  //.status(500) //500 for internal server error
     }
 }
 Controllers.signin = async (req,res)=>{
@@ -69,7 +69,7 @@ else{
 
 Controllers.das = async (req,res)=>{
     try{
-        const gotit = await AuthModel.findOne({email:req.token.email},{email:1,name:1,address:1,active:1}) //req.token.email
+        const gotit = await AuthModel.findOne({email:req.token.email},{email:1,name:1,active:1}) //req.token.email
         console.log(gotit)
     if(gotit.active===true){
         res.send({msg:"geting successfully",status:true,response:gotit}).status(301)
@@ -176,6 +176,17 @@ Controllers.uppwd = async(req,res)=>{
     catch(err){
         console.log(err)
         res.send("updated err")
+    }
+}
+
+Controllers.getprod = async (req,res)=>{
+    try{
+        const result = await pdModel.find({})
+        res.send({msg:"fetching products ",status:true,response:result}).status(200)
+    }
+    catch(err){
+        console.log(err)
+        res.send({msg:"failed ?",status:false}).status(500)
     }
 }
 module.exports = Controllers

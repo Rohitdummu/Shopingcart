@@ -1,4 +1,4 @@
-const AuthModel=require("../models/newmodel")
+const AuthModel=require("../models/usermodel")
 let Controllers={}
 const jtoken = require("jsonwebtoken")
 

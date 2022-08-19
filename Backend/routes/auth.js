@@ -34,4 +34,7 @@ router.post("/updatepwd",Protect.authorize,
 Controllers.uppwd
 )
 
+router.get("/getproducts",      //Protect.authorize,
+Controllers.getprod
+)
 module.exports=router
