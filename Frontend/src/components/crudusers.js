@@ -37,8 +37,8 @@ function Crud() {
                     <div className="card bg-info align-items-center" style={{width:"15rem",height:'13rem'}}>
                         <div className="card-body">
                                 <h5 className="card-title">Your profile</h5>
-                                <h5 className="card-title"><span className='text-danger'>E-Mail: </span>mkekfkef</h5>
-                                <h5 className="card-title"><span className='text-danger'>name: </span>mkekfkef</h5>
+                                <h5 className="card-title"><span className='text-danger'>E-Mail: </span>static data</h5>
+                                <h5 className="card-title"><span className='text-danger'>name: </span>static</h5>
                                 <button className="mx-2 btn btn-danger" type="button" onClick={(e)=>handledelete(e)}>delete</button>
                                 <button className="btn btn-warning" type="button" >update</button>
                         </div>

@@ -17,7 +17,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha  ./tests/contactapp.specs.js",
     "start": "nodemon index.js"
   },
   "author": "",

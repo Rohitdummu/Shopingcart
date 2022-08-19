@@ -81,8 +81,6 @@ function Dash() {
         </div>
         :<h2>⚠️Error💥 Not Getting Data</h2>
     }
-    <div className='row'>
-    </div>
     </div>
   )
 }
