@@ -19,17 +19,11 @@ function Navb() {
         navigate("/signin")
     }
   return (
-    <div className="sticky-top">
-        <Navbar bg="dark" variant="dark">
+    <div>
+        <Navbar fixed="top" bg="info" variant="dark">
             <Container>
                 <Navbar.Brand >
-                    <img
-                    alt=" "
-                    // src="./logo/logo.png"
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                    />{' '}
+                    {' '}
                     Shoping App
                     <Navbar.Toggle />
                     <Navbar.Text>
@@ -65,7 +59,7 @@ function Navb() {
                         </Navbar.Text> 
                     }
                     <span className='text-danger mx-1'> | </span>
-                    <NavDropdown title = "Menu" className='text-primary mx-1' id="basic-nav-dropdown">
+                    <NavDropdown title = "Menu" className='text-white mx-1' id="basic-nav-dropdown">
                         <NavDropdown.Item>
                             Separated link
                         </NavDropdown.Item>

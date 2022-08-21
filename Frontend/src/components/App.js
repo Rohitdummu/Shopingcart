@@ -3,6 +3,7 @@ import Signup from './signup'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Navb from './navbar';
 import Dash from './dashboard';
+import Dashed from './dash';
 import Micro from './prod'
 import React,{createContext, useState} from 'react';
 import PrivateRoutes from './protect'
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Signin/>} />
         <Route path='/signin' element={<Signin/>} />
+        <Route path='/dash' element={<Dashed/>}></Route>
         <Route path='/signup' element={<Signup/>} />
         <Route path='/adminsignin' element={<Adminsignin/>}></Route>
         <Route path='/adminsignup' element={<AdSignup/>}></Route>

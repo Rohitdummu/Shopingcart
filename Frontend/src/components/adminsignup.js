@@ -31,14 +31,7 @@ const handlesubmit = async (e)=>{
     }
 }
   return (
-    <div style={{ 
-        backgroundImage: `url(${bgim})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          width: '100vw',
-          height: '100vh'
-      }}>
+    <div>
     <div style={{ width: '31rem', height: '32rem' }} className="position-absolute top-50 start-50 translate-middle shadow-lg container rounded  my-5 mb-2 bg-dark bg-gradient text-white" >
     <h2 className='text-center'>Admin Registration</h2>
         <div className='row'>
@@ -63,7 +56,7 @@ const handlesubmit = async (e)=>{
                 
                 <input type="submit" className="btn btn-primary" value="Submit" style={{margin:'auto',display:'block'}}/>
                 </form>
-                <label>Sign Up As ?<Link style={{textDecoration:'none'}} to="/signup"> User</Link></label>
+                <center>SignUp As ?<Link style={{textDecoration:'none'}} to="/signup"> User</Link></center>
             </div>
         </div>
     </div>

@@ -45,14 +45,7 @@ function Signin() {
         localStorage.setItem("login",true)
     }
   return (
-    <div style={{ 
-        backgroundImage: `url(${bgim})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          width: '100vw',
-          height: '100vh'
-      }}>
+    <div>
     <div style={{ width: '28rem', height: '23rem' }} className="position-absolute top-50 start-50 translate-middle shadow-lg container rounded  my-5 mb-2 bg-dark bg-gradient text-white">
     <h2 className='text-center'>User Login</h2>
         <div className='row'>
@@ -69,7 +62,7 @@ function Signin() {
                 <input type="submit" style={{margin:'auto',display:'block'}} className="btn btn-primary" value="Submit" />
                 </form>
                 <br/>
-                <label>Sign in As ?<Link style={{textDecoration:'none'}} to="/adminsignin"> Admin</Link></label>
+                <center>Signin As ?<Link style={{textDecoration:'none'}} to="/adminsignin"> Admin</Link></center>
             </div>
         </div>
     </div>
